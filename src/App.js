@@ -6,14 +6,14 @@ import Header from './components/Header';
 
 function App() {
   const [notes, setNotes] = useState(
-
-    () => JSON.parse(localStorage.getItem("user-saved-notes")),
     [{
       id: nanoid(),
       noteText: "This is an example note. This app allows you to add and delete your notes. You can add as many notes as want but there's a 250 character limit on each note.",
       noteDate: "01/01/23",
       noteTime: "00:00"
     }],
+
+    () => JSON.parse(localStorage.getItem("user-saved-notes")),
 
   );
     
