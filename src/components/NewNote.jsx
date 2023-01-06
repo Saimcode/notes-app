@@ -23,14 +23,15 @@ const NewNote = ({ handleNewNote }) => {
 
 		} else {
 			setNoteUserText('');
-			userTextbox.placeholder = "Please enter some text here..."
-			userTextbox.classList.add("error")
 			
 			// Adding and resetting shake animation
 			setTimeout(() => {
 				document.querySelector(".new").classList.remove("shake-animation")
 			}, 400);
 			document.querySelector(".new").classList.add("shake-animation")
+
+			userTextbox.placeholder = "Please enter some text here..."
+			userTextbox.classList.add("error")
 		}
 	};
 
@@ -41,7 +42,7 @@ const NewNote = ({ handleNewNote }) => {
 				rows='8'
 				cols='10'
 				maxLength={250}
-				placeholder={"Type here to add a note..."}
+				placeholder="Type here to add a note..."
 				value={noteUserText}
 				onChange={handleValueChange}
 			></textarea>
