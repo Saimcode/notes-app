@@ -57,10 +57,8 @@
   scroll-behavior: smooth;
 }
 .notes-list .note span::-webkit-scrollbar {
-  width: 0;
-}
-.notes-list .note span:hover::-webkit-scrollbar {
-  width: 0.3em;
+  width: 4px;
+  height: 4px;
 }
 .notes-list .note span::-webkit-scrollbar-thumb {
   background-color: #b0b0b0;

@@ -39,11 +39,8 @@
             scroll-behavior: smooth;
 
             &::-webkit-scrollbar {
-                width: 0;
-            }
-
-            &:hover::-webkit-scrollbar {
-                width: .3em;
+                width: 4px;
+                height: 4px;
             }
 
             &::-webkit-scrollbar-thumb {

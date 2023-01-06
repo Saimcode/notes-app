@@ -7,9 +7,10 @@ const NewNote = ({ handleNewNote }) => {
 	const characterLimit = (250 - noteUserText.length)
 
 	const handleValueChange = (e) => {
-		if (characterLimit !== 0) {
-			setNoteUserText(e.target.value)
-		} 
+		setNoteUserText(e.target.value)
+
+		userTextbox.classList.remove("error")
+		userTextbox.placeholder = "Type here to add a note..."
 	};
 	
 	console.log(characterLimit)
@@ -30,13 +31,16 @@ const NewNote = ({ handleNewNote }) => {
 			}, 400);
 			document.querySelector(".new").classList.add("shake-animation")
 
-			userTextbox.placeholder = "Please enter some text here..."
 			userTextbox.classList.add("error")
+			userTextbox.placeholder = "Please enter some text here..."
 		}
 	};
 
 	return (
 		<div className='note new'>
+			{
+				
+			}
 			<textarea
 				className={"textbox"}
 				rows='8'
