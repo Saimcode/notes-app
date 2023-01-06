@@ -38,9 +38,6 @@ const NewNote = ({ handleNewNote }) => {
 
 	return (
 		<div className='note new'>
-			{
-				
-			}
 			<textarea
 				className={"textbox"}
 				rows='8'
