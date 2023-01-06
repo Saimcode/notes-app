@@ -1,0 +1,398 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@keyframes Shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+.shake-animation {
+  animation: Shake 0.42s cubic-bezier(0.26, 0.07, 0.19, 0.97) both;
+}
+
+.notes-list {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+@media screen and (min-width: 700px) {
+  .notes-list {
+    flex-flow: row wrap;
+  }
+}
+@media screen and (min-width: 970px) {
+  .notes-list {
+    justify-content: start;
+  }
+}
+.notes-list .note {
+  background-color: #f6f6f6;
+  color: #5b5757;
+  padding: 10px;
+  height: 300px;
+  width: 300px;
+  border: 2px solid #e9e9e9;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.notes-list .note:hover {
+  border: 2px solid #b0b0b0;
+}
+.notes-list .note span {
+  width: 100%;
+  padding: 8px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.notes-list .note span::-webkit-scrollbar {
+  width: 0;
+}
+.notes-list .note span:hover::-webkit-scrollbar {
+  width: 0.3em;
+}
+.notes-list .note span::-webkit-scrollbar-thumb {
+  background-color: #b0b0b0;
+  border-radius: 9999px;
+}
+.notes-list .note span::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.notes-list .note.new {
+  background-color: #c8e9ff;
+  border: 2px solid #6ab9ee;
+}
+.notes-list .note.new:focus-within, .notes-list .note.new:hover {
+  border: 2px solid #16a2ff;
+}
+.notes-list .note.new .textbox {
+  font-family: "Roboto", Courier, monospace;
+  background: none;
+  border: none;
+  outline: none;
+  color: #242428;
+  padding: 8px;
+  width: 100%;
+  height: 220px;
+  overflow-y: scroll;
+  resize: none;
+  font-size: 1rem;
+}
+.notes-list .note.new .textbox::-webkit-scrollbar {
+  width: 0px;
+}
+.notes-list .note.new .textbox::placeholder {
+  font-style: italic;
+}
+.notes-list .note.new .textbox.error::placeholder {
+  color: #ff7676;
+}
+.notes-list .note.new .note-footer .character-count.error {
+  color: #d00202;
+}
+.notes-list .note.new .note-footer .add-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 0.85rem;
+}
+.notes-list .note.new .note-footer .add-btn:hover {
+  background-color: #ddffe7;
+}
+.notes-list .note.new .note-footer .add-btn .check-icon {
+  font-size: 1.05rem;
+  color: #00ba34;
+}
+.notes-list .note .note-footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.notes-list .note .note-footer .delete-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+}
+.notes-list .note .note-footer .delete-btn:hover {
+  background-color: rgb(255, 209, 209);
+}
+.notes-list .note .note-footer .delete-btn .delete-icon {
+  font-size: 1.5rem;
+  color: #d00202;
+}
+.notes-list .note .note-footer p {
+  color: #5b5757;
+  font-size: 0.85rem;
+  padding: 8px;
+}
+.notes-list .note .note-footer .date {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 5px;
+}
+.notes-list .note .note-footer .date p {
+  padding: 0;
+}
+.notes-list .note .note-footer .date .date-icon {
+  font-size: 1.1em;
+  color: #16a2ff;
+}
+
+.dark .notes-list .note {
+  background-color: #333336;
+  color: #e9e9e9;
+  border: 2px solid #5b5757;
+}
+.dark .notes-list .note:hover {
+  border: 2px solid #969696;
+}
+.dark .notes-list .note.new {
+  background-color: #3495ef;
+  border: 2px solid #6ab9ee;
+}
+.dark .notes-list .note.new:focus-within, .dark .notes-list .note.new:hover {
+  border: 2px solid #c8e9ff;
+}
+.dark .notes-list .note.new .textbox {
+  color: #e9e9e9;
+}
+.dark .notes-list .note.new .textbox::placeholder {
+  color: #e9e9e9;
+}
+.dark .notes-list .note.new .textbox.error::placeholder {
+  color: rgba(216, 0, 0, 0.9176470588);
+}
+.dark .notes-list .note.new .note-footer .character-count.error {
+  color: #d00202;
+}
+.dark .notes-list .note.new .note-footer .add-btn {
+  background-color: transparent;
+}
+.dark .notes-list .note.new .note-footer .add-btn:hover {
+  background-color: #ddffe7;
+}
+.dark .notes-list .note.new .note-footer .add-btn:hover .check-icon {
+  color: #00ba34;
+}
+.dark .notes-list .note.new .note-footer .add-btn .check-icon {
+  font-size: 1.05rem;
+  color: #38e86a;
+}
+.dark .notes-list .note .note-footer .delete-btn {
+  background-color: transparent;
+}
+.dark .notes-list .note .note-footer .delete-btn:hover {
+  background-color: rgb(255, 209, 209);
+}
+.dark .notes-list .note .note-footer .delete-btn:hover .delete-icon {
+  color: #d00202;
+}
+.dark .notes-list .note .note-footer .delete-btn .delete-icon {
+  font-size: 1.5rem;
+  color: #ff7676;
+}
+.dark .notes-list .note .note-footer p {
+  color: #e9e9e9;
+}
+.dark .notes-list .note .note-footer .date .date-icon {
+  font-size: 1.1em;
+  color: #16a2ff;
+}
+
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 970px;
+}
+
+.dark .container,
+.dark body {
+  background-color: #242428;
+}
+
+.header {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  color: #5b5757;
+  gap: 20px;
+  margin: 0 0 20px 0;
+  width: 100%;
+}
+@media screen and (min-width: 500px) {
+  .header {
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+}
+.header .logo {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.header .logo span {
+  font-weight: 600;
+  font-size: 1.05em;
+  color: #16a2ff;
+}
+.header .search-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  min-width: 230px;
+  max-width: 100%;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+  border: 2px solid #e9e9e9;
+  background-color: #fefefe;
+  color: #16a2ff;
+}
+.header .search-bar input {
+  font-size: 1rem;
+  background-color: transparent;
+  color: #242428;
+  border: none;
+  width: 100%;
+}
+.header .search-bar input:active, .header .search-bar input:focus {
+  outline: none;
+}
+.header .search-bar input::placeholder {
+  font-style: italic;
+}
+.header .search-bar:focus-within {
+  border: 2px solid #b0b0b0;
+  background-color: #f6f6f6;
+}
+.header .change-theme-btn {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fefefe;
+  color: #16a2ff;
+  border: 2px solid #e9e9e9;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 1.5em;
+}
+.header .change-theme-btn:hover {
+  filter: brightness(0.95);
+}
+.header .change-theme-btn:active {
+  border: 2px solid #b0b0b0;
+}
+.header .change-theme-btn svg {
+  margin: auto;
+}
+
+.dark .header {
+  color: #e9e9e9;
+}
+.dark .header .logo span {
+  color: #16a2ff;
+}
+.dark .header .search-bar {
+  border: 2px solid #5b5757;
+  background-color: #333336;
+  color: #16a2ff;
+}
+.dark .header .search-bar input {
+  background-color: transparent;
+  color: #e9e9e9;
+}
+.dark .header .search-bar input:active, .dark .header .search-bar input:focus {
+  outline: none;
+}
+.dark .header .search-bar input::placeholder {
+  color: #969696;
+}
+.dark .header .search-bar:focus-within {
+  border: 2px solid #969696;
+}
+.dark .header .change-theme-btn {
+  background-color: #333336;
+  color: #6ab9ee;
+  border: 2px solid #5b5757;
+}
+.dark .header .change-theme-btn:hover {
+  background-color: #5b5757;
+}
+.dark .header .change-theme-btn:active {
+  border: 2px solid #969696;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0%;
+}
+*::-webkit-scrollbar {
+  width: 0.35rem;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #b0b0b0;
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background-color: #5b5757;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+span, p {
+  font-size: 1rem;
+  font-weight: normal;
+  word-break: normal;
+  white-space: break-spaces;
+}
+
+button, a {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+/*# sourceMappingURL=App.css.map */

@@ -1,0 +1,54 @@
+@import "./variables";
+@import "./animations";
+@import "./note";
+@import "./container";
+@import "./header";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0%;
+
+    &::-webkit-scrollbar {
+        width: .35rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $light_400;
+        border-radius: 9999px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+}
+
+.dark {
+    *::-webkit-scrollbar-thumb {
+        background-color: $dark_300;
+    }
+}
+  
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+span, p {
+    font-size: 1rem;
+    font-weight: normal;
+    word-break: normal;
+    white-space: break-spaces;
+}
+
+button, a {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+

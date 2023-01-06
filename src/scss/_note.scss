@@ -1,0 +1,292 @@
+.notes-list {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    @media screen and (min-width: 700px) {
+        flex-flow: row wrap;
+    }
+
+    @media screen and (min-width: 970px) {
+        justify-content: start;
+    }
+
+    .note {
+        background-color: $light_200;
+        color: $dark_300;
+        padding: 10px;
+        height: 300px;
+        width: 300px;
+
+        border: 2px solid $light_300;
+        border-radius: 10px;
+    
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &:hover {
+            border: 2px solid $light_400;
+        }
+
+        span {
+            width: 100%;
+            padding: 8px;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+
+            &:hover::-webkit-scrollbar {
+                width: .3em;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $light_400;
+                border-radius: 9999px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+        }
+
+        &.new {
+
+            background-color: $light_blue;
+            border: 2px solid $light_blue2;
+
+            &:focus-within,
+            &:hover {
+                border: 2px solid $blue;
+            }
+
+            .textbox {
+                font-family: 'Roboto', Courier, monospace;
+
+                background: none;
+                border: none;
+                outline: none;
+
+                color: $dark_100;
+
+                padding: 8px;
+                
+                width: 100%;
+                height: 220px;
+                
+                overflow-y: scroll;
+                resize: none;
+
+                font-size: 1rem;
+
+                &::-webkit-scrollbar {
+                    width: 0px;
+                }
+
+                &::placeholder {
+                    font-style: italic;
+                }
+                
+                &.error {
+                    &::placeholder {
+                        color: $light_red;
+                    }
+                }
+            }
+
+            .note-footer {
+
+                .character-count {
+                    &.error {
+                        color: $red;
+                    }
+                }
+
+                .add-btn {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 3px;
+
+                    padding: 10px;
+                    border-radius: 5px;
+
+                    background-color: transparent;
+
+                    font-size: .85rem;
+
+                    &:hover {
+                        background-color: $light_green2;
+                    }
+
+                    .check-icon {
+                        font-size: 1.05rem;
+                        color: $green;
+                    }
+                }
+            }
+        }
+    
+        .note-footer {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            .delete-btn {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 3px;
+    
+                padding: 5px;
+                border-radius: 5px;
+    
+                background-color: $light_200;
+    
+                &:hover {
+                    background-color: $light_red2;
+                }
+    
+                .delete-icon {
+                    font-size: 1.5rem;
+                    color: $red;
+                }
+            }
+
+            p {
+                color: $dark_300;
+                font-size: .85rem;
+                padding: 8px; 
+            }
+    
+            .date {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                padding: 8px;
+
+                gap: 5px;
+
+                p {
+                    padding: 0;
+                }
+                
+                .date-icon {
+                    font-size: 1.1em;
+                    color: $blue;
+                }
+            }
+        
+        }
+    }
+}
+
+.dark .notes-list {
+
+    .note {
+        background-color: $dark_200;
+        color: $light_300;
+
+        border: 2px solid $dark_300;
+
+        &:hover {
+            border: 2px solid $dark_400;
+        }
+
+        &.new {
+
+            background-color: $dark_blue2;
+            border: 2px solid $light_blue2;
+
+            &:focus-within,
+            &:hover {
+                border: 2px solid $light_blue;
+            }
+
+            .textbox {
+                color: $light_300;
+
+                &::placeholder {
+                    color: $light_300;
+                }
+                                
+                &.error {
+                    &::placeholder {
+                        color: $red2;
+                    }
+                }
+            }
+
+            .note-footer {
+
+                .character-count {
+                    &.error {
+                        color: $red;
+                    }
+                }
+
+                .add-btn {
+
+                    background-color: transparent;
+
+                    &:hover {
+                        background-color: $light_green2;
+
+                        & .check-icon {
+                            color: $green;
+                        }
+                    }
+
+                    .check-icon {
+                        font-size: 1.05rem;
+                        color: $light_green;
+                    }
+                }
+            }
+        }
+    
+        .note-footer {
+
+            .delete-btn {
+                background-color: transparent;
+    
+                &:hover {
+                    background-color: $light_red2;
+                    .delete-icon {
+                        color: $red;
+                    }
+                }
+    
+    
+                .delete-icon {
+                    font-size: 1.5rem;
+                    color: $light_red;
+                }
+            }
+
+            p {
+                color: $light_300;
+            }
+    
+            .date {                
+                .date-icon {
+                    font-size: 1.1em;
+                    color: $blue;
+                }
+            }
+        
+        }
+    }
+}

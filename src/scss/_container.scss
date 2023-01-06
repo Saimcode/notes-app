@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 20px;
+    margin: 0 auto;
+
+    max-width: 970px;
+}
+
+// Dark Mode
+.dark .container,
+.dark body {
+    background-color: $dark_100;
+}
