@@ -45,11 +45,11 @@ function Header({ selectedOption, setSelectedOption, notes, setNotes, handleThem
           </div>
 
           <Select 
-              defaultValue={"date-OL"}
+              defaultValue={null}
               onChange={setSelectedOption}
               options={options}
               isSearchable={false}
-              isClearable={true}
+              isClearable={false}
               placeholder={"--Sort By--"}   
               className="react-select-container"  
               classNamePrefix="react-select"
@@ -78,11 +78,11 @@ function Header({ selectedOption, setSelectedOption, notes, setNotes, handleThem
           </div>
 
           <Select 
-              defaultValue={"date-OL"}
+              defaultValue={null}
               onChange={setSelectedOption}
               options={options}
               isSearchable={false}
-              isClearable={true}
+              isClearable={false}
               placeholder={"--Sort By--"}   
               className="react-select-container"  
               classNamePrefix="react-select"
@@ -105,11 +105,11 @@ function Header({ selectedOption, setSelectedOption, notes, setNotes, handleThem
           </div>
 
             <Select 
-              defaultValue={"date-OL"}
+              defaultValue={null}
               onChange={setSelectedOption}
               options={options}
               isSearchable={false}
-              isClearable={true}
+              isClearable={false}
               placeholder={"--Sort By--"}   
               className="react-select-container"  
               classNamePrefix="react-select"

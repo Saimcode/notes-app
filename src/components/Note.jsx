@@ -22,6 +22,13 @@ function Note({
   const [noteFadeIn, setNoteFadeIn] = useState(false);
   const [noteFadeOut, setNoteFadeOut] = useState(false);
 
+  // Formatting noteDate
+  const formattedDate = new Date(noteDate).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit"
+  });
+
   useEffect(() => {
     if (id === newNoteId) {
       setNoteFadeIn(true);
@@ -52,12 +59,8 @@ function Note({
         <div className="date">
           <AiOutlineClockCircle className="date-icon" />
           <p>
-            {noteTime} - {noteDate.toLocaleDateString("en-GB", {
-              day: '2-digit',
-              month: '2-digit',
-              year: '2-digit'
-            })} 
-        <em>{editText}</em>
+            {noteTime} - {formattedDate} 
+            <em>{editText}</em>
           </p>
         </div>
         <div className="buttons">

@@ -29,85 +29,23 @@ function App() {
   const [editMode, setEditMode] = useState(false)
   const [editedNoteAnimation, setEditedNoteAnimation] = useState(false);
   const [selectedOption, setSelectedOption] = useState();
-
-  const exampleNote = [{
-    id: nanoid(),
-    noteText: "This is an example note. This app allows you to add and delete your notes. You can add as many notes as want but there's a <strong>250 character limit</strong> on each note.",
-    noteDate: new Date().toLocaleDateString("en-GB", {
-      day: '2-digit',
-      month: '2-digit',
-      year: '2-digit'
-    }),
-    noteTime: (new Date().getHours() < 10 ? "0" : "") + new Date().getHours() + ":" + (new Date().getMinutes() < 10 ? "0" : "") + new Date().getMinutes(),
-  }]
+    
+  const exampleNote = [
+    {
+      id: nanoid(),
+      noteText: "This is an example note. This app allows you to add and delete your notes. You can add as many notes as want but there's a <strong>250 character limit</strong> on each note.",
+      noteDate: new Date(),
+      noteTime: (new Date().getHours() < 10 ? "0" : "") + new Date().getHours() + ":" + (new Date().getMinutes() < 10 ? "0" : "") + new Date().getMinutes(),
+    },
+  ]
   const [notes, setNotes] = useState([]);
-  // const [sortNotes, setSortNotes] = useState(notes);
 
   // Saving Notes to local storage.
   useEffect(() => {
     localStorage.setItem("user-saved-notes",
       JSON.stringify(notes)
     )
-  }, [setNotes])
-
-  // Sorting filters
-  const handleSortNotes = () => {
-    if (selectedOption && selectedOption !== '') {
-      let sortedNotes = [...notes];
-      switch (selectedOption.value) {
-
-        case "alphabetically-AZ":
-          sortedNotes.sort((a, b) => a.noteText && b.noteText ? 
-          a.noteText.localeCompare(b.noteText) : null);
-          console.log("alphabetically sorted A-Z: ", sortedNotes)
-          setNotes(sortedNotes)
-          break;
-
-        case "alphabetically-ZA":
-          sortedNotes.sort((a, b) => b.noteText && a.noteText ? 
-          b.noteText.localeCompare(a.noteText) : null);
-          console.log("alphabetically sorted Z-A: ", sortedNotes)
-          setNotes(sortedNotes)
-          break;
-
-        case "date-OL":
-          sortedNotes.sort((a, b) => {
-            const aDate = a.noteDate
-            console.log("aDate", aDate, a.noteDate)
-            aDate.setTime(a.noteTime);
-            console.log(a.noteTime)
-            
-            const bDate = b.noteDate
-            bDate.setTime(b.noteTime);
-            
-            return bDate - aDate;
-          });
-          console.log("date sorted OL: ", sortedNotes)
-          setNotes(sortedNotes)
-          break;
-
-        case "date-LO":
-          sortedNotes.sort((a, b) => {
-            let dateResult = a.noteDate.localeCompare(b.noteDate);
-            console.log("date-LO data-result:",dateResult)
-            return dateResult === 0 ? a.noteTime.localeCompare(b.noteTime) : dateResult;
-          });
-          console.log("date sorted LO: ", sortedNotes)
-          setNotes(sortedNotes)
-          break;
-
-        default:
-          setNotes([...notes]);
-          break;
-      }
-    }
-  };
-
-  useEffect(() => {
-    handleSortNotes();
-  }, [selectedOption]);
-
-
+  }, [notes])
 
   // Check localStorage availability
   useEffect(() => {
@@ -130,12 +68,65 @@ function App() {
     }
   }, [])
 
-  console.log("updated notes: ", notes)
+  // Sorting filters
+  useEffect(() => {
+    handleSortNotes()
+  }, [selectedOption, notes.length]);
+
+  const handleSortNotes = () => {
+    if (selectedOption && selectedOption !== '') {
+      
+      let sortedNotes = [...notes];
+
+      switch (selectedOption.value) {
+
+        case "alphabetically-AZ":          
+          sortedNotes.sort((a, b) => a.noteText && b.noteText ? 
+          a.noteText.localeCompare(b.noteText) : null)
+
+          console.log("alphabetically sorted A-Z: ", notes)
+          break;
+
+        case "alphabetically-ZA":
+          sortedNotes.sort((a, b) => a.noteText && b.noteText ? 
+          b.noteText.localeCompare(a.noteText) : null)
+
+          console.log("alphabetically sorted Z-A: ", notes)
+          break;
+
+        case "date-OL":          
+          sortedNotes.sort((a, b) => {
+            const aDate = new Date(a.noteDate);            
+            const bDate = new Date(b.noteDate)
+            
+            return aDate - bDate;
+          })
+          console.log("date sorted OL: ", notes)
+          break;
+
+        case "date-LO":
+          sortedNotes.sort((a, b) => {
+            const aDate = new Date(a.noteDate);
+            const bDate = new Date(b.noteDate)
+            
+            return bDate - aDate;
+          })
+          console.log("date sorted LO: ", notes)
+          break;
+
+        default:
+          setNotes([...notes])
+          break;
+      }
+
+      setNotes(sortedNotes);
+    }
+  };
 
   // Handling dark mode.
   const [darkMode, setDarkMode] = useState(false);
 
-  // Saving user's theme settings everytime its changed
+  // Saving user's theme settings every time its changed
   useEffect(() => {
     localStorage.setItem("user-saved-theme", darkMode.toString())
 

@@ -13,11 +13,9 @@ const NotesList = ({
   editedNoteAnimation,
   noteRef,
   setErrorCloseAnimation,
+  handleSortNotes
 }) => {
   //console.log("notelist: ", newNoteId)
-
-
-
   return (
     <div className="notes-list">
       <NewNote
