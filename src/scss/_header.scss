@@ -123,7 +123,8 @@
                 min-width: 220px;
                 border-radius: 10px;
                 width: 100%;
-    
+                transition: none;
+                
                 .react-select {
     
                     &__control {
@@ -490,59 +491,58 @@
 }
 
 // Dark mode
-.dark .header,
-.dark .header.mobile {
+.dark .header {
+
+    &.desktop {
+                .logo {
+            span {
+                color: $blue;
+            }
+        }
+    
+        .change-theme-btn {
+            background-color: $dark_200;
+            color: $light_blue2;
+    
+            border: 2px solid $dark_300;
+    
+            &:hover,
+            &:focus {
+                background-color: $dark_300;
+            }
+    
+            &:active {
+                border: 2px solid $dark_400;
+            }
+        }
+    }
 
     color: $light_300;
 
-    .logo {
-        span {
-            color: $blue;
+    .header-first {
+
+        .logo {
+            span {
+                color: $blue;
+            }
         }
-    }
-
-    .search-bar {
-
-        border: 2px solid $dark_300;
-
-        background-color: $dark_200;
-        color: $blue;
-
-        input {
-            background-color: transparent;
-            color: $light_300;
-
-            &:active,
+    
+        .change-theme-btn {
+            background-color: $dark_200;
+            color: $light_blue2;
+    
+            border: 2px solid $dark_300;
+    
+            &:hover,
             &:focus {
-                outline: none;
+                background-color: $dark_300;
             }
-
-            &::placeholder {
-                color: $dark_400;
+    
+            &:active {
+                border: 2px solid $dark_400;
             }
-        }
-
-        &:focus-within {
-            border: 2px solid $dark_400;
         }
     }
-
-    .change-theme-btn {
-        background-color: $dark_200;
-        color: $light_blue2;
-
-        border: 2px solid $dark_300;
-
-        &:hover,
-        &:focus {
-            background-color: $dark_300;
-        }
-
-        &:active {
-            border: 2px solid $dark_400;
-        }
-    }
-
 
     .header-second {
 
@@ -569,6 +569,8 @@
 
             &:focus-within {
                 border: 2px solid $dark_400;
+                background-color: $dark_200;
+
             }
         }
 
@@ -583,8 +585,11 @@
                 }
                 
                 &__control {
-                    &:focus-within {
+                    &:focus-within,
+                    &:hover {
                         border: 2px solid $dark_400;
+                        background-color: $dark_200;
+                        color: $light_300;
                     }
 
                     background-color: $dark_200;

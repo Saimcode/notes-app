@@ -825,6 +825,7 @@
   min-width: 220px;
   border-radius: 10px;
   width: 100%;
+  transition: none;
 }
 .header.mobile .header-second .react-select-container .react-select__control {
   font-size: 1rem;
@@ -1071,122 +1072,92 @@
   background: #16a2ff;
 }
 
-.dark .header,
-.dark .header.mobile {
+.dark .header {
   color: #e9e9e9;
 }
-.dark .header .logo span,
-.dark .header.mobile .logo span {
+.dark .header.desktop .logo span {
   color: #16a2ff;
 }
-.dark .header .search-bar,
-.dark .header.mobile .search-bar {
-  border: 2px solid #5b5757;
-  background-color: #333336;
-  color: #16a2ff;
-}
-.dark .header .search-bar input,
-.dark .header.mobile .search-bar input {
-  background-color: transparent;
-  color: #e9e9e9;
-}
-.dark .header .search-bar input:active, .dark .header .search-bar input:focus,
-.dark .header.mobile .search-bar input:active,
-.dark .header.mobile .search-bar input:focus {
-  outline: none;
-}
-.dark .header .search-bar input::placeholder,
-.dark .header.mobile .search-bar input::placeholder {
-  color: #969696;
-}
-.dark .header .search-bar:focus-within,
-.dark .header.mobile .search-bar:focus-within {
-  border: 2px solid #969696;
-}
-.dark .header .change-theme-btn,
-.dark .header.mobile .change-theme-btn {
+.dark .header.desktop .change-theme-btn {
   background-color: #333336;
   color: #6ab9ee;
   border: 2px solid #5b5757;
 }
-.dark .header .change-theme-btn:hover, .dark .header .change-theme-btn:focus,
-.dark .header.mobile .change-theme-btn:hover,
-.dark .header.mobile .change-theme-btn:focus {
+.dark .header.desktop .change-theme-btn:hover, .dark .header.desktop .change-theme-btn:focus {
   background-color: #5b5757;
 }
-.dark .header .change-theme-btn:active,
-.dark .header.mobile .change-theme-btn:active {
+.dark .header.desktop .change-theme-btn:active {
   border: 2px solid #969696;
 }
-.dark .header .header-second .search-bar,
-.dark .header.mobile .header-second .search-bar {
+.dark .header .header-first .logo span {
+  color: #16a2ff;
+}
+.dark .header .header-first .change-theme-btn {
+  background-color: #333336;
+  color: #6ab9ee;
+  border: 2px solid #5b5757;
+}
+.dark .header .header-first .change-theme-btn:hover, .dark .header .header-first .change-theme-btn:focus {
+  background-color: #5b5757;
+}
+.dark .header .header-first .change-theme-btn:active {
+  border: 2px solid #969696;
+}
+.dark .header .header-second .search-bar {
   border: 2px solid #5b5757;
   background-color: #333336;
   color: #16a2ff;
 }
-.dark .header .header-second .search-bar input,
-.dark .header.mobile .header-second .search-bar input {
+.dark .header .header-second .search-bar input {
   background-color: transparent;
   color: #e9e9e9;
 }
-.dark .header .header-second .search-bar input:active, .dark .header .header-second .search-bar input:focus,
-.dark .header.mobile .header-second .search-bar input:active,
-.dark .header.mobile .header-second .search-bar input:focus {
+.dark .header .header-second .search-bar input:active, .dark .header .header-second .search-bar input:focus {
   outline: none;
 }
-.dark .header .header-second .search-bar input::placeholder,
-.dark .header.mobile .header-second .search-bar input::placeholder {
+.dark .header .header-second .search-bar input::placeholder {
   color: #969696;
 }
-.dark .header .header-second .search-bar:focus-within,
-.dark .header.mobile .header-second .search-bar:focus-within {
+.dark .header .header-second .search-bar:focus-within {
   border: 2px solid #969696;
+  background-color: #333336;
 }
-.dark .header .header-second .react-select-container,
-.dark .header.mobile .header-second .react-select-container {
+.dark .header .header-second .react-select-container {
   background-color: #333336;
   color: #e9e9e9;
 }
-.dark .header .header-second .react-select-container .react-select::placeholder,
-.dark .header.mobile .header-second .react-select-container .react-select::placeholder {
+.dark .header .header-second .react-select-container .react-select::placeholder {
   color: #969696;
 }
-.dark .header .header-second .react-select-container .react-select__control,
-.dark .header.mobile .header-second .react-select-container .react-select__control {
+.dark .header .header-second .react-select-container .react-select__control {
   background-color: #333336;
   color: #e9e9e9;
   border: 2px solid #5b5757;
   box-shadow: none;
 }
-.dark .header .header-second .react-select-container .react-select__control:focus-within,
-.dark .header.mobile .header-second .react-select-container .react-select__control:focus-within {
+.dark .header .header-second .react-select-container .react-select__control:focus-within, .dark .header .header-second .react-select-container .react-select__control:hover {
   border: 2px solid #969696;
-}
-.dark .header .header-second .react-select-container .react-select__control .react-select__single-value,
-.dark .header.mobile .header-second .react-select-container .react-select__control .react-select__single-value {
   background-color: #333336;
   color: #e9e9e9;
 }
-.dark .header .header-second .react-select-container .react-select__control .react-select__indicator:hover, .dark .header .header-second .react-select-container .react-select__control .react-select__indicator:focus,
-.dark .header.mobile .header-second .react-select-container .react-select__control .react-select__indicator:hover,
-.dark .header.mobile .header-second .react-select-container .react-select__control .react-select__indicator:focus {
-  color: hsl(0deg, 0%, 100%);
-}
-.dark .header .header-second .react-select-container .react-select__menu .react-select__menu-list,
-.dark .header.mobile .header-second .react-select-container .react-select__menu .react-select__menu-list {
-  background-color: #5b5757;
-}
-.dark .header .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option,
-.dark .header.mobile .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option {
+.dark .header .header-second .react-select-container .react-select__control .react-select__single-value {
+  background-color: #333336;
   color: #e9e9e9;
 }
-.dark .header .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-focused,
-.dark .header.mobile .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-focused {
+.dark .header .header-second .react-select-container .react-select__control .react-select__indicator:hover, .dark .header .header-second .react-select-container .react-select__control .react-select__indicator:focus {
+  color: hsl(0deg, 0%, 100%);
+}
+.dark .header .header-second .react-select-container .react-select__menu .react-select__menu-list {
+  background-color: #5b5757;
+}
+.dark .header .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option {
+  color: #e9e9e9;
+}
+.dark .header .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-focused {
   background-color: rgba(255, 255, 255, 0.8);
   color: #333336;
 }
-.dark .header .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-selected,
-.dark .header.mobile .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-selected {
+.dark .header .header-second .react-select-container .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-selected {
   background: #3495ef;
   color: #e9e9e9;
 }

@@ -71,7 +71,7 @@ function App() {
   // Sorting filters
   useEffect(() => {
     handleSortNotes()
-  }, [selectedOption, notes.length]);
+  }, [selectedOption]);
 
   const handleSortNotes = () => {
     if (selectedOption && selectedOption !== '') {
@@ -81,16 +81,25 @@ function App() {
       switch (selectedOption.value) {
 
         case "alphabetically-AZ":          
-          sortedNotes.sort((a, b) => a.noteText && b.noteText ? 
-          a.noteText.localeCompare(b.noteText) : null)
+          sortedNotes.sort((a, b) => {
+            const htmlToString_a = a.noteText.replace(/<[^>]+>/g, "");
+            const htmlToString_b = b.noteText.replace(/<[^>]+>/g, "");
+            
+            return a.noteText && b.noteText ? 
+            htmlToString_a.localeCompare(htmlToString_b) : null
+          })
 
           console.log("alphabetically sorted A-Z: ", notes)
           break;
 
         case "alphabetically-ZA":
-          sortedNotes.sort((a, b) => a.noteText && b.noteText ? 
-          b.noteText.localeCompare(a.noteText) : null)
-
+          sortedNotes.sort((a, b) => {
+            const htmlToString_a = a.noteText.replace(/<[^>]+>/g, "");
+            const htmlToString_b = b.noteText.replace(/<[^>]+>/g, "");
+            
+            return a.noteText && b.noteText ? 
+            htmlToString_b.localeCompare(htmlToString_a) : null
+          })
           console.log("alphabetically sorted Z-A: ", notes)
           break;
 
@@ -180,6 +189,15 @@ function App() {
     setEditMode(true)
   }
 
+  const filteredNotes = notes.filter((note) => {
+    if (!searchInput || !searchInput.toLowerCase().trim()) {
+      return true;
+    } else {
+      return note.noteText.toLowerCase().includes(searchInput.toLowerCase());
+    }
+  })
+  
+
   return (
     <div className={"container"}>
 
@@ -214,10 +232,7 @@ function App() {
       />
       
       <NotesList notes=
-      {notes.filter((note) => 
-        !searchInput || !searchInput.toLowerCase().trim() &&
-        note.noteText.toLowerCase().includes(searchInput.toLowerCase()) 
-      )}
+      {filteredNotes}
       setNotes={setNotes}
       handleNewNote={addNewNote} 
       handleDeleteNote={deleteNote} 
