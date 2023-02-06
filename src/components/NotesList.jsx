@@ -24,12 +24,7 @@ const NotesList = ({
         setErrorCloseAnimation={setErrorCloseAnimation}
       />
       
-      {notes.sort((a, b) => {
-            const aDate = new Date(a.noteDate);
-            const bDate = new Date(b.noteDate)
-            
-            return bDate - aDate;
-          }).map((note) => {
+      {notes.map((note) => {
             return (
               <Note
                 key={note.id}

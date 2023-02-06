@@ -66,71 +66,82 @@ function App() {
       setDarkMode(false)
 
     }
-  }, [])
+    }, [])
+
+  // Search for a note.
+  const [searchInput, setSearchInput] = useState('');
+
+  const filteredNotes = notes.filter((note) => {
+    if (!searchInput || !searchInput.toLowerCase().trim()) {
+      return true;
+    } else {
+      return note.noteText.toLowerCase().includes(searchInput.toLowerCase());
+    }
+  })
 
   // Sorting filters
   useEffect(() => {
-    handleSortNotes()
-  }, [selectedOption]);
 
-  const handleSortNotes = () => {
-    if (selectedOption && selectedOption !== '') {
-      
-      let sortedNotes = [...notes];
+    const handleSortNotes = () => {
+      if (selectedOption && selectedOption !== '') {
+        
+        let sortedNotes = [...notes];
 
-      switch (selectedOption.value) {
+        switch (selectedOption.value) {
 
-        case "alphabetically-AZ":          
-          sortedNotes.sort((a, b) => {
-            const htmlToString_a = a.noteText.replace(/<[^>]+>/g, "");
-            const htmlToString_b = b.noteText.replace(/<[^>]+>/g, "");
-            
-            return a.noteText && b.noteText ? 
-            htmlToString_a.localeCompare(htmlToString_b) : null
-          })
+          case "alphabetically-AZ":          
+            sortedNotes.sort((a, b) => {
+              const htmlToString_a = a.noteText.replace(/<[^>]+>/g, "");
+              const htmlToString_b = b.noteText.replace(/<[^>]+>/g, "");
+              
+              return a.noteText && b.noteText ? 
+              htmlToString_a.localeCompare(htmlToString_b) : null
+            })
 
-          console.log("alphabetically sorted A-Z: ", notes)
-          break;
+            console.log("alphabetically sorted A-Z: ", notes)
+            break;
 
-        case "alphabetically-ZA":
-          sortedNotes.sort((a, b) => {
-            const htmlToString_a = a.noteText.replace(/<[^>]+>/g, "");
-            const htmlToString_b = b.noteText.replace(/<[^>]+>/g, "");
-            
-            return a.noteText && b.noteText ? 
-            htmlToString_b.localeCompare(htmlToString_a) : null
-          })
-          console.log("alphabetically sorted Z-A: ", notes)
-          break;
+          case "alphabetically-ZA":
+            sortedNotes.sort((a, b) => {
+              const htmlToString_a = a.noteText.replace(/<[^>]+>/g, "");
+              const htmlToString_b = b.noteText.replace(/<[^>]+>/g, "");
+              
+              return a.noteText && b.noteText ? 
+              htmlToString_b.localeCompare(htmlToString_a) : null
+            })
+            console.log("alphabetically sorted Z-A: ", notes)
+            break;
 
-        case "date-OL":          
-          sortedNotes.sort((a, b) => {
-            const aDate = new Date(a.noteDate);            
-            const bDate = new Date(b.noteDate)
-            
-            return aDate - bDate;
-          })
-          console.log("date sorted OL: ", notes)
-          break;
+          case "date-OL":          
+            sortedNotes.sort((a, b) => {
+              const aDate = new Date(a.noteDate);            
+              const bDate = new Date(b.noteDate)
+              
+              return aDate - bDate;
+            })
+            console.log("date sorted OL: ", notes)
+            break;
 
-        case "date-LO":
-          sortedNotes.sort((a, b) => {
-            const aDate = new Date(a.noteDate);
-            const bDate = new Date(b.noteDate)
-            
-            return bDate - aDate;
-          })
-          console.log("date sorted LO: ", notes)
-          break;
+          case "date-LO":
+            sortedNotes.sort((a, b) => {
+              const aDate = new Date(a.noteDate);
+              const bDate = new Date(b.noteDate)
+              
+              return bDate - aDate;
+            })
+            console.log("date sorted LO: ", notes)
+            break;
 
-        default:
-          setNotes([...notes])
-          break;
+          default:
+            setNotes([...notes])
+            break;
+        }
+
+        setNotes(sortedNotes);
       }
-
-      setNotes(sortedNotes);
-    }
-  };
+    };
+    handleSortNotes()
+  }, [selectedOption, notes.length]);
 
   // Handling dark mode.
   const [darkMode, setDarkMode] = useState(false);
@@ -152,9 +163,6 @@ function App() {
   }
 
   console.log("selectedOption: ", selectedOption)
-
-  // Search for a note.
-  const [searchInput, setSearchInput] = useState('');
 
   // Adding a new note.
   const addNewNote = (userText) => {
@@ -189,15 +197,6 @@ function App() {
     setEditMode(true)
   }
 
-  const filteredNotes = notes.filter((note) => {
-    if (!searchInput || !searchInput.toLowerCase().trim()) {
-      return true;
-    } else {
-      return note.noteText.toLowerCase().includes(searchInput.toLowerCase());
-    }
-  })
-  
-
   return (
     <div className={"container"}>
 
@@ -222,7 +221,12 @@ function App() {
       { showErrorMsg && <ErrorMsg setShowErrorMsg={setShowErrorMsg} showErrorMsg={showErrorMsg} textEditor={textEditor} setErrorCloseAnimation={setErrorCloseAnimation} errorCloseAnimation={errorCloseAnimation} /> }
       
       <Header 
-      notes={notes} 
+      notes={selectedOption === undefined ? notes.sort((a, b) => {
+        const aDate = new Date(a.noteDate);
+        const bDate = new Date(b.noteDate)
+        console.log("run")
+        return bDate - aDate;
+      }) : notes} 
       setNotes={setNotes} 
       currentMode={darkMode} 
       handleThemeToggle={handleThemeToggle} 
