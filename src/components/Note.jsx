@@ -18,7 +18,6 @@ function Note({
 }) {
   //console.log(id, noteDate, noteTime, noteText)
   const sanitizedText = DOMPurify.sanitize(noteText);
-  const htmlToStringText = sanitizedText.replace(/<[^>]+>/g, "");
 
   const [noteFadeIn, setNoteFadeIn] = useState(false);
   const [noteFadeOut, setNoteFadeOut] = useState(false);
@@ -54,14 +53,14 @@ function Note({
     ${noteFadeOut ? "animate__customBounceOut" : ""} 
     ${noteFadeIn ? "animated__green-fade" : ""}
     `} ref={noteRef} id={id} >
-      <span>{htmlToStringText}</span>
+      <span dangerouslySetInnerHTML={{ __html: sanitizedText }}></span>
 
       <div className="note-footer">
         <div className="date">
           <AiOutlineClockCircle className="date-icon" />
           <p>
             {noteTime} - {formattedDate} 
-             <em> {editText}</em>
+            <em> {editText}</em>
           </p>
         </div>
         <div className="buttons">

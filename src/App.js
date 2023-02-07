@@ -221,12 +221,7 @@ function App() {
       { showErrorMsg && <ErrorMsg setShowErrorMsg={setShowErrorMsg} showErrorMsg={showErrorMsg} textEditor={textEditor} setErrorCloseAnimation={setErrorCloseAnimation} errorCloseAnimation={errorCloseAnimation} /> }
       
       <Header 
-      notes={selectedOption === undefined ? notes.sort((a, b) => {
-        const aDate = new Date(a.noteDate);
-        const bDate = new Date(b.noteDate)
-        console.log("run")
-        return bDate - aDate;
-      }) : notes} 
+      notes={notes} 
       setNotes={setNotes} 
       currentMode={darkMode} 
       handleThemeToggle={handleThemeToggle} 
@@ -236,7 +231,12 @@ function App() {
       />
       
       <NotesList notes=
-      {filteredNotes}
+      {selectedOption === undefined ? filteredNotes.sort((a, b) => {
+        const aDate = new Date(a.noteDate);
+        const bDate = new Date(b.noteDate)
+        console.log("run")
+        return bDate - aDate;
+      }) : filteredNotes}
       setNotes={setNotes}
       handleNewNote={addNewNote} 
       handleDeleteNote={deleteNote} 
