@@ -8,3 +8,13 @@ This is a simple and easy to use application that allows you to add and remove n
 
 * React JS for building the UI
 * SCSS / CSS for styling components
+
+## 🕔 Version History
+
+* Second Version - v0.2.0
+   * [Release Notes](https://github.com/Saimcode/notes-app/releases/tag/v0.2.0)
+   * [Live Site](https://aesthetic-baklava-afb43a.netlify.app/)
+
+* Initial Release - v0.1.0
+   * [Release Notes](https://github.com/Saimcode/notes-app/releases/tag/v0.1.0)
+   * [Live Site](https://bright-cupcake-26e6ac.netlify.app/)
