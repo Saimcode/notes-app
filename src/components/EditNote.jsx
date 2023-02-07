@@ -70,11 +70,11 @@ function EditNote({
             id: note.id,
             noteText: noteUserText,
             noteDate: userDate,
-            
+
             editText: editText,
             noteTime: userTime,
           };
-            return { ...note, ...editedNote };
+          return { ...note, ...editedNote };
         }
         return note;
       });
@@ -128,6 +128,19 @@ function EditNote({
     }, 800);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.code === "Enter" || event.code === "NumpadEnter") {
+      // Check if the user is not on mobile or tablet
+      if (!isMobile) {
+        event.preventDefault();
+        // Check if the shift key is not pressed with the Enter key
+        if (!event.shiftKey) {
+          handleSaveClick();
+        }
+      }
+    }
+  };
+
   useEffect(() => {
     // Handling note appearing animation
     editNote.current.classList.add("animate__fadeInDownBig");
@@ -159,7 +172,7 @@ function EditNote({
       <div
         ref={editNote}
         className={`note new edit-note animate__animated  
-    ${editAnimation ? "animate__fadeOutDownBig" : " "}`}
+        ${editAnimation ? "animate__fadeOutDownBig" : " "}`}
       >
         <ReactQuill
           ref={textEditor}
@@ -170,12 +183,7 @@ function EditNote({
           modules={modules}
           // Save new note when Enter key is pressed
           onKeyDown={(event) => {
-            if (event.code === "Enter" || event.code === "NumpadEnter") {
-              event.preventDefault();
-              if (!event.shiftKey || !isMobile) {
-                handleSaveClick();
-              }
-            }
+            handleKeyDown(event);
           }}
         />
         <div className="note-footer">
