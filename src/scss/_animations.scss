@@ -1,3 +1,5 @@
+@import '/node_modules/animate.css/animate.min.css';
+
 @keyframes Shake {
   10%,
   90% {
@@ -23,4 +25,231 @@
 
 .shake-animation {
   animation: Shake 0.42s cubic-bezier(.26,.07,.19,.97) both;
+}
+
+// Saved Note animation
+@keyframes greenFade {
+  from {
+    border: 2px solid $light_green;
+    background-color: $light_green2;
+  }
+
+  to {
+    border: 2px solid $light_300;
+    background-color: $light_200;
+  }
+}
+@keyframes darkmode-greenFade {
+    from {
+      border: 2px solid $green;
+      background-color: $light_green;
+      }
+  
+    to {
+      border: 2px solid $dark_300;
+      background-color: $dark_200;
+    }
+}
+
+.animated__green-fade:not(.dark) {
+  animation: greenFade 1s;
+}
+
+.dark {
+  .animated__green-fade {
+    animation: darkmode-greenFade 1s;
+  }
+}
+
+
+// Overwriting bounce in and out animation from animate.css
+.animate__customBounceIn:not(.dark) {
+  -webkit-animation-duration: calc(1s * 0.75);
+  animation-duration: calc(1s * 0.75);
+  -webkit-animation-duration: calc(var(--animate-duration) * 0.75);
+  animation-duration: calc(var(--animate-duration) * 0.75);
+  -webkit-animation-name: customBounceIn;
+  animation-name: customBounceIn;
+}
+
+.dark {
+  .animate__customBounceIn {
+    -webkit-animation-name: customBounceInDark;
+    animation-name: customBounceInDark;
+  }
+}
+
+@keyframes customBounceIn {
+  from {
+    border: 2px solid $dark_green;
+    background-color: $green;
+  }
+
+  to {
+    border: 2px solid $light_300;
+    background-color: $light_200;
+  }
+
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes customBounceInDark {
+  from {
+    border: 2px solid $dark_green;
+    background-color: $green;
+  }
+
+  to {
+    border: 2px solid $dark_300;
+    background-color: $dark_200;
+  }
+
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+
+// bounce out
+@keyframes customBounceOut {
+
+  from {
+    border: 2px solid $red;
+    background-color: $light_red;
+  }
+
+  to {
+    border: 2px solid $light_300;
+    background-color: $light_200;
+  }
+
+  20% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  50%,
+  55% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+@keyframes customBounceOutDark {
+  to {
+    border: 2px solid $dark_200;
+    background-color: $dark_300;
+  }
+
+  from {
+    -webkit-transform: scale3d(1,1,1);
+    transform: scale3d(1,1,1);
+    border: 2px solid $red;
+    background-color: $light_red;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1);
+    transform: scale3d(0.1, 0.1, 0.1);
+  }
+}
+.animate__customBounceOut:not(.dark) {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-name: customBounceOut;
+  animation-name: customBounceOut;
+}
+
+.dark {
+  .animate__customBounceOut {
+    -webkit-animation-name: customBounceOutDark;
+    animation-name: customBounceOutDark;
+  }
 }

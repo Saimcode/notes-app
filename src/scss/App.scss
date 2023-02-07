@@ -1,5 +1,6 @@
 @import "./variables";
 @import "./animations";
+@import "./error-msg";
 @import "./note";
 @import "./container";
 @import "./header";
@@ -35,6 +36,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
+    position: relative;
 }
 
 span, p {

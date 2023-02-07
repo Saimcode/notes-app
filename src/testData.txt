@@ -1,0 +1,32 @@
+[
+    {
+      id: nanoid(),
+      noteText: "c",
+      noteDate: new Date('Sat Feb 04 2023 11:10:34 GMT+0000'),
+      noteTime: "11:10",
+    },
+    {
+      id: nanoid(),
+      noteText: "B",
+      noteDate: new Date('Sat Feb 04 2023 10:00:00 GMT+0000'),
+      noteTime: "10:00",
+    },
+    {
+      id: nanoid(),
+      noteText: "a",
+      noteDate: new Date('Fri Feb 03 2023 16:10:34 GMT+0000'),
+      noteTime: "16:10",
+    },
+    {
+      id: nanoid(),
+      noteText: "e",
+      noteDate: new Date('Thu Jan 26 2023 08:14:34 GMT+0000'),
+      noteTime: "08:14",
+    },
+    {
+      id: nanoid(),
+      noteText: "d",
+      noteDate: new Date('Thu Jan 26 2023 09:04:34 GMT+0000'),
+      noteTime: "09:04",
+    }
+]
